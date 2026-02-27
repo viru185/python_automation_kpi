@@ -1,3 +1,4 @@
+import json
 import logging
 from datetime import datetime
 from time import sleep
@@ -40,6 +41,16 @@ try:
             if data == "exit":
                 log_status("Received exit command — stopping monitor")
                 break
+
+            # ignore JSON formatted text (e.g. copied payloads or configuration)
+            try:
+                parsed = json.loads(data)
+                # if it parsed successfully and result is a dict or list, skip
+                log_status("JSON content detected — ignored", "debug")
+                last = copy_text
+                continue
+            except Exception:
+                pass
 
             log_status(f"New clipboard content detected: {data[:80]!r}")
 
