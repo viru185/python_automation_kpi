@@ -6,14 +6,13 @@ Log levels:
     WARNING: An indication that something unexpected happened, or indicative of some problem in the near future (e.g. ‘disk space low’). The software is still functioning as expected.
     ERROR: Due to a more serious problem, the software has not been able to perform some function.
     CRITICAL: A serious error, indicating that the program itself may be unable to continue running.
-    
 """
 
 # Logging config
 
 LOGS_FILE = "logs/app.log"
 LOGS_DIR = "logs"
-LOG_LEVEL = "info"  
+LOG_LEVEL = "INFO"
 LOG_TO_FILE = True
 LOG_TO_CONSOLE = False
 
@@ -32,3 +31,6 @@ LLM_MODEL = "mistralai/ministral-3-8b-reasoning"
 
 # excel file path
 EXCEL_PATH = "data/Merian_Gold_Mines_KPIs.xlsx"
+
+# cache file path (will store processed key parameters results)
+CACHE_PATH = "data/cache.json"
