@@ -8,5 +8,5 @@ dependencies = [
     "lmstudio>=1.5.0",
     "loguru>=0.7.3",
     "pyperclip>=1.11.0",
-    "openpyxl>=3.1.2",  # used for reading/writing Excel files
+    "openpyxl>=3.1.2",
 ]
