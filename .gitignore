@@ -12,3 +12,6 @@ wheels/
 # my files
 test.py
 data/
+
+# logs
+logs/
