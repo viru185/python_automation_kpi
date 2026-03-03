@@ -14,7 +14,7 @@ LOGS_FILE = "logs/app.log"
 LOGS_DIR = "logs"
 LOG_LEVEL = "INFO"
 LOG_TO_FILE = True
-LOG_TO_CONSOLE = False
+LOG_TO_CONSOLE = True
 
 
 # CONFIGURATION FOR LLM
