@@ -11,7 +11,6 @@ from utils.logger import logger
 
 # convenience constant for empty KPI cell
 EMPTY = [None, "", "null"]
-TOTAL_ROW_PROCESS = 0
 
 
 def normalize_json(input_str: str) -> str:
@@ -28,6 +27,7 @@ def main() -> None:
 
     cache = Cache(CACHE_PATH)
     excel = ExcelManager(EXCEL_PATH)
+    total_rows = 0
 
     for sheet in excel.iterate_sheets():
         logger.info(f"processing sheet '{sheet.title}'")
@@ -40,7 +40,7 @@ def main() -> None:
 
         # iterate each data row
         for row_idx, key_cell, kpi_cell in excel.iter_sheet_rows(sheet):
-            TOTAL_ROW_PROCESS += 1
+            total_rows += 1
             logger.info(f"sheet={sheet.title} row={row_idx}")
 
             key_val = key_cell.value
@@ -105,8 +105,8 @@ def main() -> None:
                 logger.error(f"error processing row {row_idx}: {e}")
                 # continue to next row without stopping
                 continue
-    
-    logger.info(f"total row processed: {TOTAL_ROW_PROCESS}")
+
+    logger.info(f"total rows processed: {total_rows}")
     logger.info("processing complete")
 
 
