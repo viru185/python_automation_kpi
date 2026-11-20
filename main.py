@@ -1,5 +1,27 @@
-import json
+import argparse
 import sys
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Generate industrial KPIs from the key parameters in the Excel workbook."
+    )
+    # answered before anything loads; listed here only as a hint in --help.
+    parser.add_argument("--author", action="store_true", help="who built this")
+    return parser.parse_known_args(argv)[0]  # any other argument is ignored, as it always was
+
+
+# Arguments are answered before the imports below: they start the file log and load the
+# LM Studio model, which neither --author nor --help may do.
+if __name__ == "__main__":
+    argv = sys.argv[1:]
+    if "--author" in argv:
+        import author
+
+        raise SystemExit(author.show())
+    parse_args(argv)
+
+import json
 from typing import Any
 
 from config import CACHE_PATH, EXCEL_PATH
